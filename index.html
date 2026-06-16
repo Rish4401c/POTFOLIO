@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritesh Singh — Data Analyst Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .dp {
+      background: #0d0d0d;
+      color: #fff;
+      width: 100%;
+      max-width: 900px;
+      border: 0.5px solid #222;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    /* NAV */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 0.5px solid #1a1a1a;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a1a1a;
+      border: 0.5px solid #333;
+      border-radius: 30px;
+      padding: 6px 14px 6px 6px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-avatar {
+      width: 28px; height: 28px;
+      background: #fff;
+      color: #000;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-link {
+      background: #1a1a1a;
+      border: 0.5px solid #333;
+      border-radius: 30px;
+      padding: 7px 16px;
+      font-size: 13px;
+      color: #ccc;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-link:hover { background: #2a2a2a; color: #fff; }
+
+    .nav-cta {
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 32px 32px 40px;
+      position: relative;
+    }
+
+    .hero-role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a1a1a;
+      border: 0.5px solid #333;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-role-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #1D9E75;
+      display: inline-block;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero-name .muted { color: #555; }
+
+    .hero-sub {
+      font-size: 14px;
+      color: #aaa;
+      line-height: 1.7;
+      max-width: 440px;
+      margin-bottom: 28px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 0.5px solid #444;
+      border-radius: 30px;
+      padding: 9px 20px;
+      font-size: 13px;
+      color: #fff;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .btn-outline:hover { border-color: #888; background: #1a1a1a; }
+
+    .btn-white {
+      background: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* CALLOUT CARDS */
+    .testi-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 8px;
+    }
+
+    .testi-card {
+      background: #1a1a1a;
+      border: 0.5px solid #2a2a2a;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 12.5px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .testi-card.tilt-left { transform: rotate(-1.5deg); }
+    .testi-card.tilt-right { transform: rotate(1.5deg); }
+
+    .testi-author {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: #1a1a1a;
+      border-top: 0.5px solid #222;
+      border-bottom: 0.5px solid #222;
+    }
+
+    @media (max-width: 480px) {
+      .stats { grid-template-columns: 1fr; gap: 1px; }
+      .stat-cell:not(:last-child) { border-right: none !important; border-bottom: 0.5px solid #1a1a1a; }
+    }
+
+    .stat-cell {
+      padding: 20px 24px;
+      background: #0d0d0d;
+    }
+
+    .stat-cell:not(:last-child) { border-right: 0.5px solid #1a1a1a; }
+
+    .stat-n {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #1D9E75;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-l {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* TWO COL SECTION */
+    .two-col {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 480px;
+      border-top: 0.5px solid #1a1a1a;
+    }
+
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; }
+      .left-col { border-right: none !important; border-bottom: 0.5px solid #1a1a1a; }
+    }
+
+    .left-col {
+      padding: 28px 24px;
+      border-right: 0.5px solid #1a1a1a;
+    }
+
+    .right-col {
+      padding: 28px 28px;
+    }
+
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .skill-group { margin-bottom: 24px; }
+
+    .skill-group-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      background: #1a1a1a;
+      border: 0.5px solid #2a2a2a;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #ccc;
+    }
+
+    .chip.green { border-color: #0F6E56; color: #1D9E75; background: #0a1f19; }
+    .chip.purple { border-color: #3C3489; color: #9b93f0; background: #12103a; }
+    .chip.blue { border-color: #185FA5; color: #6aade8; background: #091626; }
+
+    /* RIGHT COL — ABOUT + EXP */
+    .about-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .about-heading .muted { color: #555; font-style: italic; }
+
+    .about-body {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 32px;
+    }
+
+    .exp-divider { border: none; border-top: 0.5px solid #1e1e1e; margin: 0 0 0; }
+
+    .exp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 0.5px solid #1e1e1e;
+      gap: 16px;
+    }
+
+    .exp-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .exp-desc {
+      font-size: 12.5px;
+      color: #777;
+      line-height: 1.6;
+      max-width: 360px;
+    }
+
+    .exp-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .exp-role {
+      font-size: 12px;
+      color: #aaa;
+      font-weight: 500;
+    }
+
+    .exp-date {
+      font-size: 11px;
+      color: #555;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* PROJECTS */
+    .proj-section {
+      padding: 32px 32px;
+      border-top: 0.5px solid #1a1a1a;
+    }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .proj-grid { grid-template-columns: 1fr; }
+    }
+
+    .proj-card {
+      background: #111;
+      border: 0.5px solid #222;
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: #1D9E75;
+    }
+
+    .proj-card.purple-accent::after { background: #7F77DD; }
+
+    .proj-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .proj-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .proj-arrow {
+      width: 28px; height: 28px;
+      background: #1a1a1a;
+      border: 0.5px solid #333;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      color: #aaa;
+      flex-shrink: 0;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .proj-arrow:hover { background: #222; color: #fff; }
+
+    .proj-p {
+      font-size: 12.5px;
+      color: #777;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .proj-impact-badge {
+      font-size: 11px;
+      background: #0a1f19;
+      color: #1D9E75;
+      border: 0.5px solid #0F6E56;
+      border-radius: 20px;
+      padding: 4px 10px;
+      display: inline-block;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .proj-impact-badge.purple {
+      background: #12103a;
+      color: #9b93f0;
+      border-color: #3C3489;
+    }
+
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .proj-tag {
+      font-size: 10px;
+      background: #1a1a1a;
+      color: #666;
+      border-radius: 10px;
+      padding: 3px 8px;
+    }
+
+    /* CREDENTIALS SECTION */
+    .cert-section {
+      padding: 32px 32px 36px;
+      border-top: 0.5px solid #1a1a1a;
+    }
+
+    .cert-list {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 12px;
+      border-bottom: 0.5px solid #1a1a1a;
+      font-size: 13.5px;
+      color: #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .cert-item:hover {
+      background: #131313;
+      color: #fff;
+    }
+
+    .cert-left-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cert-ico {
+      width: 34px; height: 34px;
+      background: #12103a;
+      border: 0.5px solid #3C3489;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #9b93f0;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .cert-ico.green-tech {
+      background: #0a1f19;
+      border-color: #0F6E56;
+      color: #1D9E75;
+    }
+
+    .cert-meta-tag {
+      font-size: 11px;
+      color: #555;
+      background: #1a1a1a;
+      padding: 3px 10px;
+      border-radius: 12px;
+      border: 0.5px solid #2d2d2d;
+    }
+
+    /* POPUP INTERACTIVE MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 9999;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 540px;
+      padding: 32px;
+      position: relative;
+      transform: scale(0.92);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: #1a1a1a;
+      border: 0.5px solid #444;
+      color: #aaa;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .modal-close-btn:hover { background: #333; color: #fff; }
+
+    .modal-badge-display {
+      width: 60px; height: 60px;
+      background: #12103a;
+      border: 1px solid #3C3489;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #9b93f0;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .modal-badge-display.green-tech {
+      background: #0a1f19;
+      border-color: #0F6E56;
+      color: #1D9E75;
+    }
+
+    .modal-org {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1D9E75;
+      margin-bottom: 6px;
+    }
+
+    .modal-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .modal-divider { border: none; border-top: 0.5px solid #222; margin: 16px 0; }
+
+    .modal-detail-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 8px;
+    }
+    .modal-detail-label { color: #555; }
+    .modal-detail-val { color: #aaa; text-align: right; max-width: 280px; word-break: break-all; }
+    
+    .modal-contact-link {
+      color: #1D9E75 !important;
+      text-decoration: none;
+    }
+    .modal-contact-link:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 24px 32px;
+      border-top: 0.5px solid #1a1a1a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-contact {
+      font-size: 12.5px;
+      color: #555;
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+
+    .footer-contact a { color: #1D9E75; text-decoration: none; }
+    .footer-contact a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="dp">
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-brand">
+      <div class="nav-avatar">R</div>
+      Ritesh Singh
+    </div>
+    <div class="nav-links">
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#credentials" class="nav-link">Credentials</a>
+    </div>
+    <button class="nav-cta" onclick="openContactModal()">+ Let's Talk</button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <div class="hero-role-tag">Data Analyst &nbsp;|&nbsp; Machine Learning Enthusiast</div>
+
+    <div class="hero-grid">
+      <div>
+        <div class="hero-name">Ritesh <span class="muted">Singh</span></div>
+        <p class="hero-sub">Aspiring Data Analyst passionate about transforming complex datasets into actionable business insights through Python, SQL, and Power BI.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-outline">See Featured Projects</a>
+          <button class="btn-white" onclick="openContactModal()">Contact Now</button>
+        </div>
+      </div>
+
+      <div class="testi-col">
+        <div class="testi-card tilt-left">
+          "The HR Analytics dashboard provides remarkable clarity into early attrition trends, transforming complex segments into immediately actionable focus areas."
+          <div class="testi-author">Workforce Strategy Insights</div>
+        </div>
+        <div class="testi-card tilt-right">
+          "ArogyaX showcases true analytical depth—integrating DenseNet-121 alongside Explainable AI (Grad-CAM) to establish clean medical validation modules."
+          <div class="testi-author">Radiology & AI Evaluation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK STATS CELL -->
+  <div class="stats">
+    <div class="stat-cell">
+      <div class="stat-n">2</div>
+      <div class="stat-l">Professional Internships</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-n">2</div>
+      <div class="stat-l">Core Analytical Projects</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-n">7</div>
+      <div class="stat-l">Verified Credentials</div>
+    </div>
+  </div>
+
+  <!-- SKILLS & EXPERIENCES DIVISION -->
+  <div class="two-col" id="skills">
+    <!-- LEFT SIDE: SKILL CHIPS -->
+    <div class="left-col">
+      <div class="section-eyebrow">Skills Arsenal</div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Core Analytics Tools</div>
+        <div class="chips">
+          <span class="chip green">Excel</span>
+          <span class="chip green">SQL</span>
+          <span class="chip green">Power BI</span>
+          <span class="chip green">MySQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Programming & Libraries</div>
+        <div class="chips">
+          <span class="chip purple">Python</span>
+          <span class="chip purple">Pandas</span>
+          <span class="chip purple">NumPy</span>
+          <span class="chip purple">Seaborn</span>
+          <span class="chip purple">Matplotlib</span>
+          <span class="chip purple">Scikit-learn</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">AI & Automation</div>
+        <div class="chips">
+          <span class="chip blue">Prompt-Driven Analysis</span>
+          <span class="chip blue">Insight Automation</span>
+          <span class="chip blue">VEO3</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Development & Methods</div>
+        <div class="chips">
+          <span class="chip">HTML / CSS / JS</span>
+          <span class="chip">Exploratory Data Analysis</span>
+          <span class="chip">Data Preprocessing</span>
+          <span class="chip">Data Visualization</span>
+          <span class="chip">Data Cleaning</span>
+          <span class="chip">Database Management</span>
+        </div>
+      </div>
+
+      <!-- NEW SECTION: Creative & Multimedia -->
+      <div class="skill-group">
+        <div class="skill-group-label">Creative & Multimedia</div>
+        <div class="chips">
+          <span class="chip">Video Editing</span>
+          <span class="chip">AI Video Editing</span>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- RIGHT SIDE: ABOUT & EXPERIENCE -->
+    <div class="right-col" id="experience">
+      <div class="about-heading">Transforming data into <span class="muted">decisions</span></div>
+      <p class="about-body">Currently pursuing my B.Tech in Computer Science & Engineering (2022–2026) at Dr. A.P.J. Abdul Kalam Technical University, Lucknow. I specialize in identifying patterns, deploying robust predictive frameworks, and structuring visual dashboards that guide key business operations.</p>
+
+      <div class="section-eyebrow" style="margin-bottom:0">Experience Timeline</div>
+      <hr class="exp-divider" style="margin-top:10px"/>
+
+      <div class="exp-row">
+        <div>
+          <div class="exp-title">DUCAT</div>
+          <div class="exp-desc">Applied advanced data preprocessing (handling missing values, feature scaling) and engineered classification & regression models with Scikit-learn. Uncovered core datasets patterns via robust EDA.</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-role">Machine Learning Intern</div>
+          <div class="exp-date">July 2025 - Aug 2025</div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div>
+          <div class="exp-title">Vault of Code</div>
+          <div class="exp-desc">Designed modern, responsive web layouts using clean web tech. Collaborated actively in engineering agile UI components, forms, and cross-browser structures.</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-role">Web Development Intern</div>
+          <div class="exp-date">June 2025 - July 2025</div>
+        </div>
+      </div>
+
+      <div class="exp-row" style="border-bottom:none">
+        <div>
+          <div class="exp-title">Kendriya Vidyalaya Aliganj, Lucknow</div>
+          <div class="exp-desc">Completed foundational Senior Secondary (XII, Class of 2022) and Higher Secondary (X, Class of 2020) educational milestones under the CBSE board.</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-role">Secondary Education</div>
+          <div class="exp-date">Class of 2022 / 2020</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS SECTION -->
+  <div class="proj-section" id="projects">
+    <div class="section-eyebrow">Featured Work Matrix</div>
+    <div class="proj-grid">
+
+      <!-- PROJECT 1 -->
+      <div class="proj-card">
+        <div class="proj-card-top">
+          <div class="proj-name">Power BI HR Analytics Dashboard</div>
+          <a href="https://www.linkedin.com/posts/ritesh-singh-bb0ab7290_hr-analytics-dashboard-attrition-workforce-ugcPost-7470039721986043904-BJ2b/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEakaPQBemnA1mBijnLGL_BKiyP1CHJ_riA" target="_blank" class="proj-arrow" title="View LinkedIn Post">↗</a>
+        </div>
+        <p class="proj-p">Designed an end-to-end organizational dashboard tracking workforce demographics, attrition rates, and role-wise turnover KPIs to cut back-end hiring overhead costs.</p>
+        <div class="proj-impact-badge">Insight: High risk found in 26-35 age bracket earning &lt;$5k</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Power BI</span>
+          <span class="proj-tag">KPI Design</span>
+          <span class="proj-tag">Data Visualization</span>
+          <span class="proj-tag">HR Analytics</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="proj-card purple-accent">
+        <div class="proj-card-top">
+          <div class="proj-name">ArogyaX: AI Chest X-Ray Platform</div>
+          <a href="https://huggingface.co/spaces/ahssuy/ArogyaX" target="_blank" class="proj-arrow" style="border-color:#3C3489; color:#9b93f0;" title="Launch Hugging Face Space">↗</a>
+        </div>
+        <p class="proj-p">Built a high-performance deep multi-label disease classifier leveraging DenseNet-121 architectures coupled with Grad-CAM activation heatmaps for trusted deployment maps.</p>
+        <div class="proj-impact-badge purple">Validation Module: Computes explicit doctor Trust Scores</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">DenseNet-121</span>
+          <span class="proj-tag">Grad-CAM</span>
+          <span class="proj-tag">Medical AI</span>
+          <span class="proj-tag">XAI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS SECTION -->
+  <div class="cert-section" id="credentials">
+    <div class="section-eyebrow">Credentials & Badges (Click to inspect)</div>
+    <div class="cert-list">
+
+      <div class="cert-item" onclick="openCertModal('udemy')">
+        <div class="cert-left-block">
+          <div class="cert-ico">SQL</div>
+          <div>Complete SQL Course 2025: Become an expert at SQL!</div>
+        </div>
+        <div class="cert-meta-tag">Udemy</div>
+      </div>
+
+      <div class="cert-item" onclick="openCertModal('pw')">
+        <div class="cert-left-block">
+          <div class="cert-ico">PBI</div>
+          <div>Masterclass on Power BI Kickstart: Data Analytics for Beginners</div>
+        </div>
+        <div class="cert-meta-tag">Physics Wallah</div>
+      </div>
+
+      <div class="cert-item" onclick="openCertModal('microsoft')">
+        <div class="cert-left-block">
+          <div class="cert-ico">AI</div>
+          <div>Microsoft AI Fundamentals Cloud Skill Challenge</div>
+        </div>
+        <div class="cert-meta-tag">Microsoft Learn</div>
+      </div>
+
+      <div class="cert-item" onclick="openCertModal('gdg')">
+        <div class="cert-left-block">
+          <div class="cert-ico">GDG</div>
+          <div>GDG on Campus Solution Challenge Achievement Badge</div>
+        </div>
+        <div class="cert-meta-tag">Google Developer Groups</div>
+      </div>
+
+      <div class="cert-item" onclick="openCertModal('lu_sql')">
+        <div class="cert-left-block">
+          <div class="cert-ico green-tech">LU</div>
+          <div>3-Day Live SQL Bootcamp Core Training Certificate</div>
+        </div>
+        <div class="cert-meta-tag">LetsUpgrade & NSDC</div>
+      </div>
+
+      <div class="cert-item" onclick="openCertModal('lu_py')">
+        <div class="cert-left-block">
+          <div class="cert-ico green-tech">LU</div>
+          <div>3-Day Live Python Bootcamp Training Certificate</div>
+        </div>
+        <div class="cert-meta-tag">LetsUpgrade & NSDC</div>
+      </div>
+
+      <div class="cert-item" onclick="openCertModal('learnovate')">
+        <div class="cert-left-block">
+          <div class="cert-ico">SS</div>
+          <div>Learnovate Enterprises Corporate Soft Skill Program</div>
+        </div>
+        <div class="cert-meta-tag">BBD Educational Group</div>
+      </div>
+
+      <div class="cert-item" onclick="openCertModal('acm')">
+        <div class="cert-left-block">
+          <div class="cert-ico">ACM</div>
+          <div>ACM Technical Problem Solving & Orientation Training</div>
+        </div>
+        <div class="cert-meta-tag">BBDITM ACM-W Chapter</div>
+      </div>
+
+      <div class="cert-item" onclick="openCertModal('infosys')">
+        <div class="cert-left-block">
+          <div class="cert-ico green-tech">INF</div>
+          <div>Core Python Development & Applied Engineering Program</div>
+        </div>
+        <div class="cert-meta-tag">Infosys Springboard</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT FOOTER -->
+  <div class="footer">
+    <div class="footer-name">Ritesh Singh · Lucknow, Uttar Pradesh, India</div>
+    <div class="footer-contact">
+      <a href="mailto:riteshs01488@gmail.com">riteshs01488@gmail.com</a>
+      <span>+91 7080182282</span>
+    </div>
+  </div>
+</div>
+
+<!-- CREDENTIAL POPUP INTERACTIVE MODAL OVERLAY -->
+<div class="modal-overlay" id="certModal" onclick="closeCertModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close-btn" onclick="hideModal('certModal')">×</button>
+    <div class="modal-badge-display" id="modalBadge">---</div>
+    <div class="modal-org" id="modalOrg">ORGANIZATION</div>
+    <h3 class="modal-title" id="modalTitle">Certificate Title</h3>
+    
+    <div class="modal-divider"></div>
+    
+    <div class="modal-detail-row">
+      <div class="modal-detail-label">Recipient Name</div>
+      <div class="modal-detail-val" style="color: #fff; font-weight: 500;">Ritesh Singh</div>
+    </div>
+    <div class="modal-detail-row">
+      <div class="modal-detail-label">Issue Date</div>
+      <div class="modal-detail-val" id="modalDate">--/--/----</div>
+    </div>
+    <div class="modal-detail-row" id="durationRow">
+      <div class="modal-detail-label">Program Length</div>
+      <div class="modal-detail-val" id="modalDuration">-- Hours</div>
+    </div>
+    <div class="modal-detail-row" id="idRow">
+      <div class="modal-detail-label">Credential ID</div>
+      <div class="modal-detail-val" id="modalId">N/A</div>
+    </div>
+    <div class="modal-detail-row" id="instructorRow">
+      <div class="modal-detail-label">Authorized Signatory</div>
+      <div class="modal-detail-val" id="modalInstructor">N/A</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT POPUP MODAL OVERLAY -->
+<div class="modal-overlay" id="contactModal" onclick="closeContactModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close-btn" onclick="hideModal('contactModal')">×</button>
+    <div class="modal-badge-display" style="background: #0a1f19; border-color: #0F6E56; color: #1D9E75;">📞</div>
+    <div class="modal-org">Get In Touch</div>
+    <h3 class="modal-title">Contact Channels</h3>
+    
+    <div class="modal-divider"></div>
+    
+    <div class="modal-detail-row">
+      <div class="modal-detail-label">Email Address</div>
+      <div class="modal-detail-val"><a href="mailto:riteshs01488@gmail.com" class="modal-contact-link">riteshs01488@gmail.com</a></div>
+    </div>
+    <div class="modal-detail-row">
+      <div class="modal-detail-label">Phone Number</div>
+      <div class="modal-detail-val" style="color: #fff; font-weight: 500;">+91 7080182282</div>
+    </div>
+    <div class="modal-detail-row">
+      <div class="modal-detail-label">Location</div>
+      <div class="modal-detail-val">Lucknow, Uttar Pradesh, India</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Certificate Database Object
+  const certificateData = {
+    udemy: {
+      title: "Complete SQL Course 2025: Become an expert at SQL!",
+      org: "Udemy Academic Platform",
+      badge: "SQL",
+      isGreen: false,
+      date: "August 16, 2025",
+      duration: "6 Total Hours",
+      id: "UC-9a34cc32-8786-4914-b088-c0787d90c837",
+      instructor: "Yogesh Dhiman (Instructor)"
+    },
+    pw: {
+      title: "Masterclass on Power BI Kickstart: Data Analytics for Beginners",
+      org: "Physics Wallah Skills",
+      badge: "PBI",
+      isGreen: false,
+      date: "April 20, 2025",
+      duration: "Masterclass Intensive",
+      id: "57121679-4c54-40da-82ff-a471b4bc4258",
+      instructor: "Mr. Alakh Pandey (Founder)"
+    },
+    microsoft: {
+      title: "Microsoft AI Fundamentals Cloud Skill Challenge",
+      org: "Microsoft Learn Student Ambassadors",
+      badge: "AI",
+      isGreen: false,
+      date: "Verified Evaluation Term",
+      duration: "Cloud Skills Challenge Metric",
+      id: "MS-Learn Ambassador Ecosystem",
+      instructor: "Satyam Mishra (Host Ambassador)"
+    },
+    gdg: {
+      title: "Google Developer Groups on Campus Solution Challenge",
+      org: "Google Developer Groups (GDG) & Hack2skill",
+      badge: "GDG",
+      isGreen: false,
+      date: "2025 Achievement Session",
+      duration: "AI Hackathon Solution Blueprinting",
+      id: "2025H2S01GSC-I108346",
+      instructor: "GDG On-Campus Changemakers Unit"
+    },
+    lu_sql: {
+      title: "SQL Bootcamp Certification Training",
+      org: "LetsUpgrade & National Skill Development Corporation (NSDC)",
+      badge: "LU",
+      isGreen: true,
+      date: "January 30, 2025",
+      duration: "3 Days (Jan 27 - Jan 29, 2025)",
+      id: "LUESQLJAN125709",
+      instructor: "ITM Edutech Training Pvt. Ltd."
+    },
+    lu_py: {
+      title: "Python Bootcamp Certification Training",
+      org: "LetsUpgrade & National Skill Development Corporation (NSDC)",
+      badge: "LU",
+      isGreen: true,
+      date: "January 27, 2025",
+      duration: "3 Days (Jan 23 - Jan 25, 2025)",
+      id: "LUEPYTJAN1251835",
+      instructor: "ITM Edutech Training Pvt. Ltd."
+    },
+    learnovate: {
+      title: "Learnovate Enterprises Corporate Soft Skill Program",
+      org: "Babu Banarasi Das Educational Group, Lucknow",
+      badge: "SS",
+      isGreen: false,
+      date: "April 2026",
+      duration: "Professional Competency Curricula",
+      id: "BBD-LE-2026-04",
+      instructor: "Ashi Garg (Chief - Operations)"
+    },
+    acm: {
+      title: "ACM Workshop on Problem Solving & Orientation Session",
+      org: "BBDITM ACM / ACM-W Women In Computing Chapter",
+      badge: "ACM",
+      isGreen: false,
+      date: "March 05, 2023",
+      duration: "Core Engineering Architecture Workshop",
+      id: "BBDITM-ACM-2023-84",
+      instructor: "Anuriti Gupta (Chairperson) & Dr. Shailendra Chauhan (Director)"
+    },
+    infosys: {
+      title: "Core Python Development & Applied Engineering Program",
+      org: "Infosys Springboard Corporate Program",
+      badge: "INF",
+      isGreen: true,
+      date: "Verified Academic Timeline",
+      duration: "Enterprise Applied Python Module",
+      id: "INF-SPRING-PY-109",
+      instructor: "Infosys Education & Competency Core"
+    }
+  };
+
+  function openCertModal(key) {
+    const data = certificateData[key];
+    if (!data) return;
+
+    document.getElementById('modalTitle').innerText = data.title;
+    document.getElementById('modalOrg').innerText = data.org;
+    document.getElementById('modalBadge').innerText = data.badge;
+    document.getElementById('modalDate').innerText = data.date;
+    document.getElementById('modalDuration').innerText = data.duration;
+    document.getElementById('modalId').innerText = data.id;
+    document.getElementById('modalInstructor').innerText = data.instructor;
+
+    const badgeEl = document.getElementById('modalBadge');
+    if (data.isGreen) {
+      badgeEl.classList.add('green-tech');
+    } else {
+      badgeEl.classList.remove('green-tech');
+    }
+
+    document.getElementById('certModal').classList.add('active');
+  }
+
+  function openContactModal() {
+    document.getElementById('contactModal').classList.add('active');
+  }
+
+  function hideModal(id) {
+    document.getElementById(id).classList.remove('active');
+  }
+
+  function closeCertModal(event) {
+    if (event.target === document.getElementById('certModal')) {
+      hideModal('certModal');
+    }
+  }
+
+  function closeContactModal(event) {
+    if (event.target === document.getElementById('contactModal')) {
+      hideModal('contactModal');
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      hideModal('certModal');
+      hideModal('contactModal');
+    }
+  });
+</script>
+
+</body>
+</html>
